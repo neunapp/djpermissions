@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+notas/applications/nota/migrations/*
+notas/applications/users/migrations/*

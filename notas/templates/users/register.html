@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar</title>
+</head>
+<body>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            
+    <div>
+        <label>Email:
+        {{ form.email }}
+        </label>
+    </div>
+    <div>
+        <label>Nombres:
+            {{ form.full_name }}
+        </label>
+    </div>
+    <div>
+        <label>Genero:
+            {{ form.genero }}
+        </label>
+    </div>
+    <div>
+        <label>Fecha Nacimiento:
+            {{ form.date_birth }}
+        </label>
+    </div>
+    <div>
+        <label>Contraseña:
+            {{ form.password1 }}
+        </label>
+    </div>
+    <div>
+        <label>Repetir Contraseña:
+            {{ form.password2 }}
+        </label>
+        {% for error in  form.password2.errors %}
+          <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <button type="submit">Registrar</button>
+  </form>
+</body>
+</html>

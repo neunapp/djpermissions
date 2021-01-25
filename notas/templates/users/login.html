@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <div style="margin-top: 2em;">
+    <div>
+        <div>
+          <h4>Acceso de usuario</h4>
+        </div>
+        <div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div">
+                    <label>Email:
+                    {{form.email}}
+                    </label>
+                </div>
+                <div>
+                    <label>Contraseña:
+                    {{form.password}}
+                    </label>
+                </div>
+                <button type="submit">Acceder</button>
+                <a href="{% url 'users_app:user-register' %}">Registrar</a>
+            </form>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

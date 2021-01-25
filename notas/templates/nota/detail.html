@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Nota</title>
+</head>
+<body>
+  <h3>{{ object.title }}</h3>
+  <p></p>
+  <p style="padding: 1em; background: aquamarine;">{{ object.description }}</p>
+
+  <a href="{% url 'nota_app:lista' %}" style="font-size: 20px;">Volver a Lista</a>
+</body>
+</html>

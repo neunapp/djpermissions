@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista notas</title>
+</head>
+<body>
+  <h3>Lista de Notas Registradas</h3>
+  <table border="1">
+    <head>
+      <th>ID</th>
+      <th>titulo</th>
+      <th>descripcion</th>
+      <th>Accciones</th>
+    </head>
+    <tbody>
+      
+      {% for nota in notas  %}
+        <tr>
+          <td>
+            {{ nota.id }}
+          </td>
+          <td>
+            {{ nota.title }}
+          </td>
+          <td>
+            {{ nota.description }}
+          </td>
+          <td>
+            <a href="{% url 'nota_app:detail' nota.id %}">Ver Nota</a>
+          </td>
+        </tr>
+      {% endfor %}
+        
+    </tbody>
+  </table>
+  <p></p>
+  <a href="{% url 'nota_app:add' %}" style="font-size: 20px;">Registrar Nueva Nota</a>
+  <p></p>
+  <a href="{% url 'nota_app:index' %}" style="font-size: 20px;">Volver a Inicio</a>
+</body>
+</html>

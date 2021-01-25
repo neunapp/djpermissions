@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Nota</title>
+</head>
+<body>
+  <h3>Registrar Nota</h3>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            
+    <div>
+        <label>Titulo:
+        {{ form.title }}
+        </label>
+    </div>
+    <div>
+        <label>Descripcion:
+            {{ form.description }}
+        </label>
+    </div>
+    <div>
+      <label>Descripcion:
+          {{ form.user_created }}
+      </label>
+    </div>
+    <div>
+        {% for error in  form.errors %}
+          <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <p></p>
+    <button type="submit">Registrar</button>
+    <p></p>
+    <a href="{% url 'nota_app:lista' %}" style="font-size: 20px;">Volver a Lista</a>
+  </form>
+</body>
+</html>

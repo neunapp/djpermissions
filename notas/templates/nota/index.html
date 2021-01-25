@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+</head>
+<body>
+  
+  <h1>Inicio proyecto: ejemplo permission Django</h1>
+  
+  {% if user.is_active %}
+    <h4>
+      <span> Hola: {{ user.email }}  {{ user.full_name }} </span> <a href="{% url 'users_app:user-logout' %}">---->Salir</a>
+    </h4>
+  {% endif %}
+    
+  <ul>
+    <li>
+      <a href="{% url 'nota_app:lista' %}">Lista de Notas</a>
+    </li>
+    <li>
+      <a href="{% url 'users_app:user-login' %}">Acceso de usuario</a>
+    </li>
+    <li>
+      <a href="{% url 'users_app:user-register' %}">Registrar usuario</a>
+    </li>
+  </ul>
+</body>
+</html>
