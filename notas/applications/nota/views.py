@@ -6,6 +6,8 @@ from django.views.generic import (
     CreateView,
     DetailView
 )
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.http import HttpResponseForbidden
 
 #
 from .models import Nota
@@ -14,10 +16,12 @@ class IndexView(TemplateView):
     template_name = "nota/index.html"
 
 
-class NotasListView(ListView):
+class NotasListView(PermissionRequiredMixin, ListView):
     model = Nota
     context_object_name = 'notas'
     template_name = "nota/lista.html"
+    permission_required = 'nota.view_nota'
+    permission_denied_message = 'no estas autorizado'
 
 
 class NotaCreateView(CreateView):
@@ -30,4 +34,12 @@ class NotaCreateView(CreateView):
 class NotaDetailView(DetailView):
     model = Nota
     template_name = "nota/detail.html"
+
+    def get(self, request, **kwargs):
+        # verificamos permisos
+        if not self.request.user.has_perm('nota.view_nota') :
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 

@@ -18,6 +18,8 @@ class Nota(models.Model):
     class Meta:
       verbose_name = 'Nota'
       verbose_name_plural = 'Notas'
+      # aqui debemos indicar permisos que si existan
+      #permissions = [('can_view_nota', 'can view nota')]
 
     def __str__(self):
         return self.title
